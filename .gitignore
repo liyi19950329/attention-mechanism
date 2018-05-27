@@ -3,6 +3,7 @@
 
 # folder
 __*/
+attention_transformer/
 
 # root
 /demo.py
