@@ -10,7 +10,8 @@ from config import config_dense as config
 from keras.models import Model
 
 from keras.layers import Input, Dense
-from keras.layers import Multiply
+
+from attention.attention_keras import attention1d, Attention1D
 
 np.random.seed(config.seed)
 
@@ -20,10 +21,12 @@ def build_model():
     inputs = Input(shape=(config.input_dim,))
 
     # attention
-    attn = Dense(config.input_dim, activation='softmax', name='attention_vec')(inputs)
-    attn = Multiply()([inputs, attn])
+    # attn = Dense(config.input_dim, activation='softmax', name='attention_vec')(inputs)
+    # attn = Multiply()([inputs, attn])
+    attn = attention1d(inputs)
+    # attn = Attention1D()(inputs)
 
-    net = Dense(16)(attn)
+    net = Dense(64)(attn)
     outputs = Dense(1, activation='sigmoid')(net)
 
     model = Model([inputs], [outputs])
@@ -31,7 +34,6 @@ def build_model():
     model.compile(loss='binary_crossentropy',
                   optimizer='adam',
                   metrics=['accuracy'])
-
     return model
 
 
@@ -45,6 +47,6 @@ if __name__ == '__main__':
     model.fit(x, y,
               epochs=config.epochs,
               batch_size=config.batch_size,
-              validation_split=0.2)
+              validation_split=0.8)
 
 

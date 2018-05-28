@@ -25,3 +25,9 @@ class config_lstm:
     input_dim = 2
     attention_column = 10
     seed = SEED
+
+    lstm_units = 32
+
+    # train
+    batch_size = 64
+    epochs = 3
