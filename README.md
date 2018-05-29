@@ -13,3 +13,8 @@
 - code
     
 - 论文阅读
+
+### New Tech
+
+- imhuay/[attention-transformer](https://github.com/imhuay/attention_transformer)
+    - Implement of "[Attention is All You Need.](https://arxiv.org/abs/1706.03762)"
