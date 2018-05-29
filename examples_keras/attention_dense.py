@@ -21,8 +21,6 @@ def build_model():
     inputs = Input(shape=(config.input_dim,))
 
     # attention
-    # attn = Dense(config.input_dim, activation='softmax', name='attention_vec')(inputs)
-    # attn = Multiply()([inputs, attn])
     attn = attention1d(inputs)
     # attn = Attention1D()(inputs)
 
@@ -30,7 +28,6 @@ def build_model():
     outputs = Dense(1, activation='sigmoid')(net)
 
     model = Model([inputs], [outputs])
-
     model.compile(loss='binary_crossentropy',
                   optimizer='adam',
                   metrics=['accuracy'])
