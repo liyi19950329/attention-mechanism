@@ -11,6 +11,7 @@
 ### Reference
 
 - code
+    - philipperemy/[keras-attention-mechanism](https://github.com/philipperemy/keras-attention-mechanism)
     
 - 论文阅读
 
